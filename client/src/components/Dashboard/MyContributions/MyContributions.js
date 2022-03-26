@@ -120,27 +120,41 @@ const MyContributions = () => {
   };
 
   const getDetails = async () => {
-    const response = await Ethqf.getPastEvents("Contribution", {
-      fromBlock: 0,
-      filter: { contributor: address },
-    });
+    const response = await axios.post(
+      "https://api.thegraph.com/subgraphs/name/dhairyavr/ethernalshack",
+      {
+        query: `query { contributions (where:{contributor:"${address}"}) {
+      id
+      contributor
+      amount
+      project_id
+      date
+    }}`,
+      }
+    );
 
-    const response1 = await Ethqf.getPastEvents("Refund", {
-      fromBlock: 0,
-      filter: { contributor: address },
-    });
-
+    const response1 = await axios.post(
+      "https://api.thegraph.com/subgraphs/name/dhairyavr/ethernalshack",
+      {
+        query: `query { refunds(where:{contributor:"${address}"}){
+          id
+          contributor
+          amount
+          project_id
+          date
+        } }`,
+      }
+    );
+    console.log(response1.data.data.refunds);
     let ids = new Set();
-    for (let val of response) {
+    for (let val of response.data.data.contributions) {
       if (
-        response1.filter(
-          (d) =>
-            d.returnValues.date.toString() ===
-            response[0].returnValues.date.toString()
+        response1.data.data.refunds.filter(
+          (d) => d.date.toString() !== val.date.toString()
         ).length === 0
       ) {
-        setData((oldArray) => [...oldArray, val.returnValues]);
-        ids.add(val.returnValues.project_id);
+        setData((oldArray) => [...oldArray, val]);
+        ids.add(val.project_id);
       }
     }
     ids = [...ids];
@@ -176,9 +190,20 @@ const MyContributions = () => {
       .call();
     amt = (installment_ids[1] / installment_ids[0]) * donationAmount;
     console.log(installment_ids, amt, id, date);
-    await Ethqf.methods
-      .refundContribution(amt, address, parseInt(id), date.toString())
-      .send({ from: address });
+    try {
+      await Ethqf.methods
+        .refundContribution(
+          amt.toString(),
+          address,
+          parseInt(id),
+          date.toString()
+        )
+        .send({ from: address });
+    } catch (e) {
+      alert(e.message);
+      return;
+    }
+    window.location.reload();
   };
 
   // if (projStatuses.length === 0) return null;
@@ -246,7 +271,7 @@ const MyContributions = () => {
                 </TableCell>
                 <TableCell style={{ width: 360, fontSize: "20px" }}>
                   {parseInt(row.amount) / Math.pow(10, 18)}{" "}
-                  <i className="fab fa-ethereum"></i>
+                  <span style={{ fontWeight: "700" }}>MATIC</span>
                   {"\u00A0"} {"\u00A0"}
                   {(usd * (parseInt(row.amount) / Math.pow(10, 18))).toFixed(
                     3
@@ -255,34 +280,31 @@ const MyContributions = () => {
                 </TableCell>
                 <TableCell style={{ width: 250, fontSize: "20px" }}>
                   {" "}
-                  {
-                    projStatuses.length > 0 &&
-                      projStatuses.filter(
-                        (data) => data.project_id === row.project_id
-                      )[0].status
-                    // === "Disqualified" ? (
-                    //   <>
-                  }
-                  <Button
-                    variant="contained"
-                    name={`${row.project_id}`}
-                    onClick={(e) =>
-                      getRefund(
-                        e,
-                        parseInt(row.amount),
-                        row.project_id,
-                        row.date
-                      )
-                    }
-                  >
-                    Get Refund
-                  </Button>
-                  {/* //   </>
-                  // ) : (
-                    // projStatuses.filter(
-                    //   (data) => data.project_id === row.project_id
-                    // )[0].status
-                  } */}
+                  {projStatuses.length > 0 &&
+                  projStatuses.filter(
+                    (data) => data.project_id === row.project_id
+                  )[0].status === "Disqualified" ? (
+                    <>
+                      <Button
+                        variant="contained"
+                        name={`${row.project_id}`}
+                        onClick={(e) =>
+                          getRefund(
+                            e,
+                            parseInt(row.amount),
+                            row.project_id,
+                            row.date
+                          )
+                        }
+                      >
+                        Get Refund
+                      </Button>
+                    </>
+                  ) : (
+                    projStatuses.filter(
+                      (data) => data.project_id === row.project_id
+                    )[0].status
+                  )}
                 </TableCell>
                 <TableCell style={{ fontSize: "20px", width: 250 }}>
                   {" "}
@@ -309,28 +331,6 @@ const MyContributions = () => {
             )}
           </TableBody>
           <TableFooter>
-            {/* <TablePagination
-                rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
-                colSpan={3}
-                count={rows.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                SelectProps={{
-                  style: { color: "grey", fontSize: "18px" },
-                  inputProps: {
-                    "aria-label": "rows per page",
-                  },
-                  native: true,
-                }}
-                style={{
-                  color: "white",
-                  backgroundColor: "black",
-                  border: "2px solid white",
-                }}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-                ActionsComponent={TablePaginationActions}
-              /> */}
             <TableRow>
               <TablePagination
                 rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}

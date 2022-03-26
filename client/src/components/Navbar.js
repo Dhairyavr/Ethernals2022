@@ -124,7 +124,7 @@ const Navbar = () => {
                       fontWeight: "700",
                     }}
                   >
-                    EthQF
+                    FundGoal
                   </a>
                 </div>
               </div>

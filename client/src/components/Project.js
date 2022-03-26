@@ -68,12 +68,20 @@ const Project = () => {
     }
     // console.log(data.id, data);
 
-    const response = await Ethqf.getPastEvents("Contribution", {
-      fromBlock: 25672753,
-      filter: { project_id: data.id },
-    });
-    let temp = await response.filter(
-      (val) => parseInt(val.returnValues.project_id) === parseInt(data.id)
+    const response = await axios.post(
+      "https://api.thegraph.com/subgraphs/name/dhairyavr/ethernalshack",
+      {
+        query: `query { contributions (where:{contributor:"${address}"}) {
+      id
+      contributor
+      amount
+      project_id
+      date
+    }}`,
+      }
+    );
+    let temp = await response.data.data.contributions.filter(
+      (val) => parseInt(val.project_id) === parseInt(data.id)
     );
     Setcontri(temp);
     let ethqf_projectdetails;
@@ -83,7 +91,7 @@ const Project = () => {
     } else {
       ethqf_projectdetails = projDetails.id;
     }
-    console.log(ethqf_projectdetails.id, temp, response);
+    // console.log(ethqf_projectdetails.id, temp);
     let details = await Ethqf.methods
       .projectDetails(parseInt(ethqf_projectdetails))
       .call();
@@ -187,10 +195,11 @@ const Project = () => {
           from: address,
           value: final_amount.toString(),
         });
-      window.location.reload();
     } catch (e) {
       alert(e);
+      return;
     }
+    window.location.reload();
   };
 
   console.log(data, percentRaised, projDetails, contri);
@@ -693,25 +702,31 @@ const Project = () => {
                             contri.map((val, key) => {
                               return (
                                 <tr key={key} style={{ fontSize: "18px" }}>
-                                  <td>{val.returnValues.contributor}</td>
+                                  <td>{val.contributor}</td>
                                   <td>
-                                    <i className="fab fa-ethereum"></i>{" "}
                                     {web3.utils.fromWei(
-                                      `${parseFloat(val.returnValues.amount)}`,
+                                      `${parseFloat(val.amount)}`,
                                       "ether"
                                     )}
+                                    <span
+                                      style={{
+                                        fontWeight: "700",
+                                        marginLeft: "3px",
+                                      }}
+                                    >
+                                      MATIC
+                                    </span>
+
                                     <span style={{ marginLeft: "20px" }}>
                                       ${" "}
                                       {usd *
                                         web3.utils.fromWei(
-                                          `${parseFloat(
-                                            val.returnValues.amount
-                                          )}`,
+                                          `${parseFloat(val.amount)}`,
                                           "ether"
                                         )}
                                     </span>
                                   </td>
-                                  <td>{val.returnValues.date}</td>
+                                  <td>{val.date}</td>
                                 </tr>
                               );
                             })}

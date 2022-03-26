@@ -130,7 +130,7 @@ const Footer = () => {
                       fontWeight: "700",
                     }}
                   >
-                    EthQF{" "}
+                    FundGoal{" "}
                   </a>
                 </div>
               </div>
