@@ -1,0 +1,272 @@
+/* #cs {
+  padding-top: 0;
+  width: 75%;
+}
+
+body {
+  color: #000;
+  overflow-x: hidden;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.cd {
+  padding: 30px 40px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  border: 1px solid #1a1e2d;
+
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
+}
+
+.blue-text {
+  color: #00bcd4;
+}
+
+.form-control-label {
+  margin-bottom: 5px;
+  margin-top: 15px;
+  text-align: left;
+  font-family: Georgia;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1e2d;
+}
+
+input,
+textarea,
+button {
+  padding: 8px 15px;
+  border-radius: 5px !important;
+  margin: 5px 0px;
+  box-sizing: border-box;
+  border: 1px solid #1a1e2d;
+  font-size: 18px !important;
+  font-weight: 500;
+}
+
+input:focus,
+textarea:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 1px solid #00bcd4;
+  outline-width: 0;
+  font-weight: 400;
+}
+
+.btn-block {
+  text-transform: uppercase;
+  font-size: 15px !important;
+  font-weight: 400;
+  height: 43px;
+  cursor: pointer;
+}
+
+.btn-block:hover {
+  color: #fff !important;
+}
+
+button:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  outline-width: 0;
+} */
+/* body {
+  background: bisque;
+}
+/*!
+ * Bootswatch v5.1.3
+ * Homepage: https://bootswatch.com
+ * Copyright 2012-2021 Thomas Park
+ * Licensed under MIT
+ * Based on Bootstrap
+*/ /*!
+ * Bootstrap v5.1.3 (https://getbootstrap.com/)
+ * Copyright 2011-2021 The Bootstrap Authors
+ * Copyright 2011-2021 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Lora&display=swap");
+
+a {
+  text-decoration: none;
+}
+a,
+a:hover {
+  color: inherit;
+}
+:root {
+  --h1: 60px;
+  --h2: 40px;
+  --h3: 32px;
+  --h4: 24px;
+  --h5: 20px;
+  --radius-h2: 20px;
+  --radius-h3: 16px;
+  --radius-h4: 8px;
+  --normal-text: 18px;
+  --small-text: 14px;
+  --padding-normal: 1vw;
+  --primary-background: #f2f2f2;
+  --faded-black: #3b3a40;
+  --white: #fff;
+  --black: #000;
+  --grey: #e7e5ea;
+  --title-font: "Open Sans", sans-serif;
+  --text-font: "Poppins", sans-serif;
+}
+
+.Sponsor_container__2p-M9 {
+  /* background-image: url(/_next/static/media/background.38e53ff2.png); */
+  background-position: 50%;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-size: cover;
+}
+.Sponsor_bold__1YF-p {
+  font-weight: 700;
+}
+.Sponsor_white_container__2GPca {
+  box-sizing: border-box;
+  border: 5px solid black;
+  /* background-color: var(--white); */
+  border-radius: 30px;
+  padding: 80px 120px;
+  margin-bottom: 80px;
+  margin-top: 160px;
+  min-width: 60%;
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.Sponsor_img {
+  background-image: url("./rocket.png");
+  align-self: center;
+  height: 100px;
+  width: 106px;
+  margin-bottom: 24px;
+}
+.Sponsor_heading__zO1-B {
+  font-family: Georgia;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 46px;
+  text-align: left;
+  align-self: center;
+}
+.Sponsor_subheading__oxCoL {
+  font-family: var(--text-font);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  text-align: center;
+}
+.Sponsor_separator__iyntA {
+  width: 100%;
+  height: 100%;
+  margin: 48px 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.Sponsor_label__2bYvs {
+  font-family: "Lato", sans-serif;
+  font-size: 23px;
+  color: #000;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 33px;
+  text-align: left;
+}
+.Sponsor_margin_top__wDAhN {
+  margin-top: 3vh;
+}
+.Sponsor_error__1mc8u {
+  color: red;
+  font-family: var(--text-font);
+  font-size: var(--small-text);
+}
+.Sponsor_input__UHgsl {
+  font-family: "Lora", serif;
+  background-color: rgba(243, 244, 246, 0.8);
+  border: none;
+  outline: none;
+  width: 100%;
+  border-radius: 6px;
+  padding: 8px 16px;
+  color: #12022f;
+  margin-top: 8px;
+  resize: none;
+}
+.Sponsor_checkbox_container__34NtQ {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.Sponsor_checkbox_label__2OqOn {
+  font-family: var(--text-font);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 33px;
+  color: rgba(59, 58, 64, 0.63);
+  margin-left: 10px;
+}
+.Sponsor_button__xJMla {
+  height: var(--h2);
+  width: 40%;
+  align-self: center;
+  margin-top: 48px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-family: var(--text-font);
+  color: #00daab;
+  text-align: center;
+}
+
+.butn {
+  margin-top: 23px;
+  margin-right: 218px;
+  text-transform: uppercase;
+  background: #674df0;
+  color: #fff;
+  font-weight: 500;
+  padding: 4px 30px;
+  line-height: 40px;
+  letter-spacing: 2px;
+  position: relative;
+  z-index: 9;
+  display: inline-block;
+}
+::-webkit-input-placeholder {
+  font-size: 22px;
+  line-height: 3;
+}
+.NewProject_dropdown__300u9 {
+  background-color: rgba(243, 244, 246, 0.8);
+  border: none;
+  outline: none;
+  width: 100%;
+  border-radius: 6px;
+  padding: 8px 16px;
+  margin-top: 8px;
+  background-image: linear-gradient(45deg, transparent 50%, gray 0),
+    linear-gradient(135deg, gray 50%, transparent 0),
+    linear-gradient(90deg, #ccc, #ccc);
+  background-position: calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+  background-size: 5px 5px, 5px 5px, 1px 1.5em;
+  background-repeat: no-repeat;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  color: #12022f;
+}
