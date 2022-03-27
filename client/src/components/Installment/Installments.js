@@ -146,13 +146,14 @@ const Installments = ({
               fontSize: "14px",
               marginRight: "2rem",
             }}
-            disabled={
-              startEnd.start &&
-              (startEnd.start.getTime() <= currentDate.getTime() &&
-              startEnd.end.getTime() >= currentDate.getTime()
-                ? false
-                : true)
-            }
+            disabled={false}
+            // {
+            //   startEnd.start &&
+            //   (startEnd.start.getTime() <= currentDate.getTime() &&
+            //   startEnd.end.getTime() >= currentDate.getTime()
+            //     ? false
+            //     : true)
+            // }
           >
             Provide an Update <i className="fas fa-arrow-right"></i>
           </button>
@@ -174,6 +175,7 @@ const Installments = ({
               fontSize: "14px",
             }}
             onClick={GetInstallmentMoney}
+            disabled={true}
           >
             Retreive Payout{" "}
           </button>

@@ -384,10 +384,7 @@ const Newproject = () => {
                   />
                   <br />
                   <br />
-                  <label className="Sponsor_label__2bYvs">
-                    Category
-                    <span className="text-danger"> *</span>
-                  </label>
+                  <label className="Sponsor_label__2bYvs">Category</label>
                   <select
                     className="Sponsor_input__UHgsl"
                     value={Project.category}
@@ -410,10 +407,7 @@ const Newproject = () => {
                   </select>
                   <br />
                   <br />
-                  <label className="Sponsor_label__2bYvs">
-                    Tags
-                    <span className="text-danger"> *</span>
-                  </label>{" "}
+                  <label className="Sponsor_label__2bYvs">Tags</label>{" "}
                   <div>
                     <select
                       className="Sponsor_input__UHgsl"

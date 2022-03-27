@@ -134,10 +134,10 @@ const Dashboard = () => {
 
     try {
       const response = await Ethqf.methods.getprojectCollection(address).call();
-      // console.log(resp);
+      console.log(response);
       let c = 0;
       for (let element of response) {
-        // console.log(element);
+        console.log(element);
         let info = await axios.get(`${element.ipfsHash}`);
         // console.log(info.data, c);
         let obj = await info.data;

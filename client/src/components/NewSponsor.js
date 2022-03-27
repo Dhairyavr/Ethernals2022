@@ -61,7 +61,7 @@ const NewSponsor = () => {
                 </h1>
                 <h4 style={{ textAlign: "center" }}>
                   Thank you for your interest in supporting open source projects
-                  on EthQF. Complete the form below to sponsor the current
+                  on GoFundIT. Complete the form below to sponsor the current
                   funding round.
                 </h4>
                 <hr className="Sponsor_separator__iyntA" />
@@ -69,7 +69,7 @@ const NewSponsor = () => {
                   {" "}
                   <label className="Sponsor_label__2bYvs">
                     Why do you want to sponsor public open source projects on
-                    EthQF ?
+                    GoFundIT ?
                   </label>
                   <textarea
                     style={{ height: "7rem" }}
@@ -99,7 +99,7 @@ const NewSponsor = () => {
                         amount: e.target.value,
                       })
                     }
-                    placeholder="Enter Sponsor Amount in Ethers"
+                    placeholder="Enter Sponsor Amount in Matic"
                     style={{ height: "3.5rem" }}
                   />
                   <br />

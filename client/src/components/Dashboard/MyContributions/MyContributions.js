@@ -145,13 +145,14 @@ const MyContributions = () => {
         } }`,
       }
     );
-    console.log(response1.data.data.refunds);
+    console.log(response1.data.data.refunds, response.data.data.contributions);
     let ids = new Set();
     for (let val of response.data.data.contributions) {
       if (
         response1.data.data.refunds.filter(
-          (d) => d.date.toString() !== val.date.toString()
-        ).length === 0
+          (d) => d.date.toString() === val.date.toString()
+        ).length === 0 ||
+        response1.data.data.refunds.length === 0
       ) {
         setData((oldArray) => [...oldArray, val]);
         ids.add(val.project_id);
@@ -167,6 +168,7 @@ const MyContributions = () => {
         .map((n, index) => `project_ids[${index}]=${n}`)
         .join("&")}`
     );
+    console.log(projStatus);
     setProjStatuses(projStatus.data.ownerDetails);
   };
 
@@ -281,30 +283,30 @@ const MyContributions = () => {
                 <TableCell style={{ width: 250, fontSize: "20px" }}>
                   {" "}
                   {projStatuses.length > 0 &&
-                  projStatuses.filter(
-                    (data) => data.project_id === row.project_id
-                  )[0].status === "Disqualified" ? (
-                    <>
-                      <Button
-                        variant="contained"
-                        name={`${row.project_id}`}
-                        onClick={(e) =>
-                          getRefund(
-                            e,
-                            parseInt(row.amount),
-                            row.project_id,
-                            row.date
-                          )
-                        }
-                      >
-                        Get Refund
-                      </Button>
-                    </>
-                  ) : (
-                    projStatuses.filter(
+                    (projStatuses.filter(
                       (data) => data.project_id === row.project_id
-                    )[0].status
-                  )}
+                    )[0].status === "Disqualified" ? (
+                      <>
+                        <Button
+                          variant="contained"
+                          name={`${row.project_id}`}
+                          onClick={(e) =>
+                            getRefund(
+                              e,
+                              parseInt(row.amount),
+                              row.project_id,
+                              row.date
+                            )
+                          }
+                        >
+                          Get Refund
+                        </Button>
+                      </>
+                    ) : (
+                      projStatuses.filter(
+                        (data) => data.project_id === row.project_id
+                      )[0].status
+                    ))}
                 </TableCell>
                 <TableCell style={{ fontSize: "20px", width: 250 }}>
                   {" "}

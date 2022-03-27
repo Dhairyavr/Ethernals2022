@@ -182,31 +182,31 @@ const UpdateDetails = ({ data, idx, voting_end, installment_start }) => {
 
         <span className="cd-date">Jan 18</span>
       </div>
-      {contributors.includes(address.toUpperCase()) &&
+      {/* {contributors.includes(address.toUpperCase()) &&
       !isRoundActive &&
       startEnd.start &&
       startEnd.start.getTime() <= currentDate.getTime() &&
       startEnd.end.getTime() >= currentDate.getTime() ? (
-        <>
-          <Button
-            variant="contained"
-            style={{ margin: "10px", backgroundColor: "#02b663" }}
-            name="yes"
-            onClick={Vote}
-          >
-            Satisfied with the work
-          </Button>
-          <Button
-            variant="contained"
-            style={{ margin: "10px" }}
-            color="error"
-            name="no"
-            onClick={Vote}
-          >
-            Terminate the Development
-          </Button>
-        </>
-      ) : null}
+        <> */}
+      <Button
+        variant="contained"
+        style={{ margin: "10px", backgroundColor: "#02b663" }}
+        name="yes"
+        onClick={Vote}
+      >
+        Satisfied with the work
+      </Button>
+      <Button
+        variant="contained"
+        style={{ margin: "10px" }}
+        color="error"
+        name="no"
+        onClick={Vote}
+      >
+        Terminate the Development
+      </Button>
+      {/* </>
+      ) : null} */}
     </div>
   );
 };

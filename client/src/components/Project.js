@@ -71,7 +71,7 @@ const Project = () => {
     const response = await axios.post(
       "https://api.thegraph.com/subgraphs/name/dhairyavr/ethernalshack",
       {
-        query: `query { contributions (where:{contributor:"${address}"}) {
+        query: `query { contributions (where:{project_id:"${projDetails.id}"}) {
       id
       contributor
       amount
@@ -401,7 +401,13 @@ const Project = () => {
                         </li>
                       </ul>
                     ) : (
-                      <span style={{ color: "red", fontWeight: "700" }}>
+                      <span
+                        style={{
+                          color: "red",
+                          fontWeight: "700",
+                          fontSize: "24px",
+                        }}
+                      >
                         Project is Disqualified
                       </span>
                     )}
