@@ -363,42 +363,49 @@ const Project = () => {
                         .join(" ")}
                       ......
                     </p>
-                    <ul className="cart-list d-sm-flex align-items-center">
-                      <li>
-                        <form className="cart-plus-minus">
-                          <div className="plus-minus pos-rel">
-                            <input
-                              type="text"
-                              value={amount}
-                              onChange={(e) => Setamount(e.target.value)}
-                            />
-                            <div className="updown plus">
-                              <i
-                                className="far fa-chevron-left"
-                                onClick={() => Setamount((prev) => prev - 1)}
-                              ></i>
+                    {projDetails.status === "Project Listed" ? (
+                      <ul className="cart-list d-sm-flex align-items-center">
+                        <li>
+                          <form className="cart-plus-minus">
+                            <div className="plus-minus pos-rel">
+                              <input
+                                type="text"
+                                value={amount}
+                                onChange={(e) => Setamount(e.target.value)}
+                              />
+                              <div className="updown plus">
+                                <i
+                                  className="far fa-chevron-left"
+                                  onClick={() => Setamount((prev) => prev - 1)}
+                                ></i>
+                              </div>
+                              <div className="updown minus">
+                                <i
+                                  className="far fa-chevron-right"
+                                  onClick={() => Setamount((prev) => prev + 1)}
+                                ></i>
+                              </div>
                             </div>
-                            <div className="updown minus">
-                              <i
-                                className="far fa-chevron-right"
-                                onClick={() => Setamount((prev) => prev + 1)}
-                              ></i>
-                            </div>
-                          </div>
-                        </form>
-                      </li>
+                          </form>
+                        </li>
 
-                      <li>
-                        <div
-                          className="theme_btn theme_btn_bg"
-                          data-animation="fadeInLeft"
-                          data-delay=".5s"
-                          onClick={ConfirmContribution}
-                        >
-                          Donate now
-                        </div>
-                      </li>
-                    </ul>
+                        <li>
+                          <div
+                            className="theme_btn theme_btn_bg"
+                            data-animation="fadeInLeft"
+                            data-delay=".5s"
+                            onClick={ConfirmContribution}
+                          >
+                            Donate now
+                          </div>
+                        </li>
+                      </ul>
+                    ) : (
+                      <span style={{ color: "red", fontWeight: "700" }}>
+                        Project is Disqualified
+                      </span>
+                    )}
+
                     <span
                       style={{
                         padding: "0px",

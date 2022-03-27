@@ -7,18 +7,12 @@ import { useMoralis } from "react-moralis";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../redux/user";
 import axios from "axios";
-import { Biconomy } from "@biconomy/mexa";
 import web3 from "../Ethereum/web3";
 const { create } = require("ipfs-http-client");
 const ipfs = create({
   host: "ipfs.infura.io",
   port: 5001,
   protocol: "https",
-});
-
-const biconomy = new Biconomy(window.ethereum, {
-  apiKey: "P6WZYkE-4.d8f90e62-d5ee-47e7-a909-d2026de5e700",
-  debug: true,
 });
 
 const baseStyle = {
@@ -120,28 +114,19 @@ const Newproject = () => {
       await authenticate();
       dispatch(setUser(Moralis.User.current().get("ethAddress")));
     }
-    //   await Moralis.Web3.authenticate();
-    // const f = await new Moralis.File(selectedFile.name, selectedFile);
-    // await f.saveIPFS();
+
     const ipfsHash = await ipfs.add(selectedFile);
     setProject({ ...Project, logo: `https://ipfs.io/ipfs/${ipfsHash.path}` });
-    // setProject({ ...Project, logo: f.ipfs() });
     console.log(Project, ipfsHash);
   };
 
   const StoreDetails = async () => {
     const hash = await ipfs.add(JSON.stringify(Project));
 
-    // const obj = new Moralis.File(`1.json`, {
-    //   base64: window.btoa(JSON.stringify(Project), "base64"),
-    // });
-
-    // await obj.saveIPFS();
     console.log(hash, Project);
     let date = new Date();
     date = date.toLocaleString().toString();
 
-    // console.log(obj.ipfs());
     const accounts = await web3.eth.getAccounts();
     try {
       const ids = await Ethqf.methods.getDetails().call();

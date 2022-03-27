@@ -4,38 +4,6 @@ import Dtitle from "../Dtitle";
 import "./Myprojects.css";
 import { useSelector } from "react-redux";
 import InstallmentsModal from "./InstallmentsModal";
-// const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-//   "& .MuiDialogContent-root": {
-//     padding: theme.spacing(2),
-//   },
-//   "& .MuiDialogActions-root": {
-//     padding: theme.spacing(1),
-//   },
-// }));
-
-// const BootstrapDialogTitle = (props) => {
-//   const { children, onClose, ...other } = props;
-
-//   return (
-//     <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
-//       {children}
-//       {onClose ? (
-//         <IconButton
-//           aria-label="close"
-//           onClick={onClose}
-//           sx={{
-//             position: "absolute",
-//             right: 8,
-//             top: 8,
-//             color: "black",
-//           }}
-//         >
-//           <CloseIcon style={{ color: "white" }} />
-//         </IconButton>
-//       ) : null}
-//     </DialogTitle>
-//   );
-// };
 
 const MyProjects = () => {
   const myprojects = useSelector((state) => state.user.myprojects);

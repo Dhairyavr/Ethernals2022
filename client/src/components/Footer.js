@@ -130,7 +130,7 @@ const Footer = () => {
                       fontWeight: "700",
                     }}
                   >
-                    FundGoal{" "}
+                    GoFundIT{" "}
                   </a>
                 </div>
               </div>
