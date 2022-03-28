@@ -5,14 +5,16 @@ import Sponsortimer from "./timer/Sponsortimer";
 import { useDispatch } from "react-redux";
 import { setSponsorenrollment, setUSD } from "../redux/user";
 import axios from "axios";
+import PriceFeed from "../Ethereum/pricefeed.js";
 const Homepage = () => {
   const dispatch = useDispatch();
 
   const getUSDValue = async () => {
-    const response = await axios.get(
-      "https://min-api.cryptocompare.com/data/pricemulti?fsyms=MATIC&tsyms=USD"
+    const response = await PriceFeed.methods.getLatestPrice().call();
+
+    dispatch(
+      setUSD(parseFloat(response[0] / Math.pow(10, response[1])).toFixed(2))
     );
-    dispatch(setUSD(parseFloat(response.data.MATIC.USD).toFixed(2)));
   };
 
   useEffect(() => {
