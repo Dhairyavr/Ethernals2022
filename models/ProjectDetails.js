@@ -23,10 +23,6 @@ const projectdetailsSchema = new mongoose.Schema({
   },
   updated_installments: [String],
   approved_installments: [String],
-  sponsors_voted: [String],
-  adm_value: {
-    type: Number,
-  },
 });
 
 module.exports = mongoose.model("projects", projectdetailsSchema);

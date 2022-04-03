@@ -163,8 +163,6 @@ app.post("/setprojectdata", async (req, res) => {
     approved_installments: [],
     updated_installments: [],
     no_of_installments: req.body.no_of_installments,
-    sponsors_voted: [],
-    adm_value: 0,
   });
 
   project.save((err) => {
